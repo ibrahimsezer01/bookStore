@@ -1,10 +1,10 @@
 const { Book, validateBook, validateUpdateBook } = require('../models/book');
 
 exports.post_book = async (req, res) => {
-    const { name, author, page, releaseDate, language, category, comments} = req.body
+    const { name, author, page, releaseDate, language, category} = req.body
     const addedBy = req.user._id
 
-    const { error } = validateBook({ name, author, page, releaseDate, language, category, addedBy, comments });
+    const { error } = validateBook({ name, author, page, releaseDate, language, category, addedBy });
     if (error) return res.status(400).send(error.details[0].message);
     
     let book = new Book({

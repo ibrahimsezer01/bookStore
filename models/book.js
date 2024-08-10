@@ -1,21 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 
-const commentSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  comment: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
-});
+
 
 const bookSchema = new mongoose.Schema({
   name: {
@@ -39,11 +25,15 @@ const bookSchema = new mongoose.Schema({
     required: true
   },
   category: {
-    type: mongoose.Schema.Types.String,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Category',
     required: true
   },
-  comments: [commentSchema],
+  comments: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Comments',
+    required: true
+  },
   addedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -60,13 +50,6 @@ const validateBook = (book) => {
     language: Joi.string().min(2).max(50).required(),
     category: Joi.string().required(),
     addedBy: Joi.string().required(),
-    comments: Joi.array().items(
-      Joi.object({
-        user: Joi.string().required(),
-        comment: Joi.string().min(1).max(1024).required(),
-        date: Joi.date().default(Date.now)
-      })
-    ),
   });
 
   return schema.validate(book);

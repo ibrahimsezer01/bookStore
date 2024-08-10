@@ -4,17 +4,18 @@ import pluginJs from "@eslint/js";
 export default [
   {
     files: ["**/*.js"],
-    languageOptions: { sourceType: "commonjs" },
-    env: {
-      node: true,
-      browser: true
+    languageOptions: {
+      sourceType: "commonjs",
+      globals: {
+        ...globals.node,
+        ...globals.browser
+      }
     },
-    globals: globals.browser,
-    extends: pluginJs.configs.recommended,
+    plugins: {
+    },
     rules: {
       "no-unused-vars": "warn",
-      "no-undef": "error",
-      "no-process-env": "off"
+      "no-undef": "error"
     }
-  }
+  },
 ];

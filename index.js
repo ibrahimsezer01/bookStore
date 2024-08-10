@@ -20,9 +20,11 @@ app.get('/', (req, res) => res.send('Hello World!'))
 const user = require('./routers/user')
 const book = require('./routers/book')
 const category = require('./routers/category')
+const comment = require('./routers/comment')
 app.use("/api/user", user)
 app.use("/api/book", book)
 app.use("/api/category", category)
+app.use("/api/comment", comment)
 
 // server configuration settings
 const port = process.env.PORT || 3000
