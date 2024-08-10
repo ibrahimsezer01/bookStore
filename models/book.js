@@ -66,6 +66,18 @@ const validateBook = (book) => {
   return schema.validate(book);
 };
 
+const validateUpdateBook = (book) => {
+  const schema = Joi.object({
+    name: Joi.string().min(1).max(255).required(),
+    author: Joi.string().min(1).max(255).required(),
+    page: Joi.number().integer().min(1).required(),
+    releaseDate: Joi.date().required(),
+    language: Joi.string().min(2).max(50).required(),
+  });
+
+  return schema.validate(book);
+}
+
 const Book = mongoose.model('Book', bookSchema);
 
-module.exports = { Book, validateBook };
+module.exports = { Book, validateBook, validateUpdateBook };

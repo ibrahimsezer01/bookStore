@@ -15,7 +15,9 @@ app.get('/', (req, res) => res.send('Hello World!'))
 
 // routes
 const user = require('./routers/user')
+const book = require('./routers/book')
 app.use("/api/user", user)
+app.use("/api/book", book)
 
 // server configuration settings
 const port = process.env.PORT || 3000
