@@ -38,6 +38,11 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  category: {
+    type: mongoose.Schema.Types.String,
+    ref: 'Category',
+    required: true
+  },
   comments: [commentSchema],
   addedBy: {
     type: mongoose.Schema.Types.ObjectId,
@@ -53,6 +58,8 @@ const validateBook = (book) => {
     page: Joi.number().integer().min(1).required(),
     releaseDate: Joi.date().required(),
     language: Joi.string().min(2).max(50).required(),
+    category: Joi.string().required(),
+    addedBy: Joi.string().required(),
     comments: Joi.array().items(
       Joi.object({
         user: Joi.string().required(),
@@ -60,7 +67,6 @@ const validateBook = (book) => {
         date: Joi.date().default(Date.now)
       })
     ),
-    addedBy: Joi.string().required()
   });
 
   return schema.validate(book);

@@ -1,10 +1,10 @@
 const { Book, validateBook, validateUpdateBook } = require('../models/book');
 
 exports.post_book = async (req, res) => {
-    const { name, author, page, releaseDate, language, comments} = req.body
+    const { name, author, page, releaseDate, language, category, comments} = req.body
     const addedBy = req.user._id
 
-    const { error } = validateBook({ name, author, page, releaseDate, language, comments, addedBy });
+    const { error } = validateBook({ name, author, page, releaseDate, language, category, addedBy, comments });
     if (error) return res.status(400).send(error.details[0].message);
     
     let book = new Book({
@@ -13,6 +13,7 @@ exports.post_book = async (req, res) => {
         page: page,
         releaseDate: releaseDate,
         language: language,
+        category: category,
         addedBy: addedBy
     });
     
@@ -21,7 +22,7 @@ exports.post_book = async (req, res) => {
 }
 
 exports.put_book = async (req, res) => {
-    const { name, author, page, releaseDate, language } = req.body;
+    const { name, author, page, releaseDate, language, category } = req.body;
     
     const { error } = validateUpdateBook(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -31,7 +32,8 @@ exports.put_book = async (req, res) => {
         author: author,
         page: page,
         releaseDate: releaseDate,
-        language: language
+        language: language,
+        category: category
     }, { new: true });
     
     if (!book) return res.status(404).send("Kitap bulunamadi.");

@@ -1,6 +1,9 @@
 // environment
 require("dotenv").config()
 
+// express-async-errors
+require("express-async-errors")
+
 // express setup
 const express = require('express')
 const app = express()
@@ -16,8 +19,10 @@ app.get('/', (req, res) => res.send('Hello World!'))
 // routes
 const user = require('./routers/user')
 const book = require('./routers/book')
+const category = require('./routers/category')
 app.use("/api/user", user)
 app.use("/api/book", book)
+app.use("/api/category", category)
 
 // server configuration settings
 const port = process.env.PORT || 3000
