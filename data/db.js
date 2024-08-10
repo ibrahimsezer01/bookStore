@@ -8,7 +8,7 @@ const cluster = config.db.cluster
 
 const connect = async () => {
     try {
-        await mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}.amufmzi.mongodb.net/${database}?retryWrites=true&w=majority`)
+        await mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}.jv1fs.mongodb.net/${database}`)
         console.log("Bağlanti oluşturuldu");
     } catch (error) {
         console.log(error);

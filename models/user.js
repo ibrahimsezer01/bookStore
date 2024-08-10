@@ -3,7 +3,6 @@ const Joi = require('joi');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// User şeması tanımlama
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -25,14 +24,15 @@ const userSchema = new mongoose.Schema({
     },
     roles: {
         type: [String],
-        default: ['user'] // Kullanıcının rolleri, varsayılan olarak 'user' rolü
+        default: ['user']
     },
     resetPasswordToken: {
         type: String,
         default: ''
     },
     resetPasswordExpires: {
-        type: Date
+        type: Date,
+        default: ''
     },
     createdAt: {
         type: Date,
@@ -40,7 +40,6 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-// Parola hash'leme (save öncesi çalışır)
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();
 
@@ -49,7 +48,6 @@ userSchema.pre('save', async function (next) {
     next();
 });
 
-// Kullanıcıya JWT token oluşturma
 userSchema.methods.generateAuthToken = function () {
     const token = jwt.sign(
         { _id: this._id, username: this.username, roles: this.roles },
@@ -59,9 +57,8 @@ userSchema.methods.generateAuthToken = function () {
     return token;
 };
 
-// Joi doğrulama şeması oluşturma
 const validateUser = (user) => {
-    const schema = Joi.object({
+    const schema = new Joi.object({
         username: Joi.string().min(3).max(50).required(),
         email: Joi.string().email().required(),
         password: Joi.string().min(6).max(1024).required(),
@@ -73,9 +70,18 @@ const validateUser = (user) => {
     return schema.validate(user);
 };
 
-// Kullanıcı girişi doğrulaması (parola dahil)
-const validateLogin = (req) => {
+const validateUserUpdate = (user) => {
     const schema = Joi.object({
+      username: Joi.string().min(3).max(30),
+      email: Joi.string().email(),
+      password: Joi.string().min(5).max(255)
+    });
+  
+    return schema.validate(user);
+  };
+
+const validateLogin = (req) => {
+    const schema = new Joi.object({
         email: Joi.string().email().required(),
         password: Joi.string().min(6).max(1024).required()
     });
@@ -83,7 +89,6 @@ const validateLogin = (req) => {
     return schema.validate(req);
 };
 
-// Model oluşturma
 const User = mongoose.model('User', userSchema);
 
-module.exports = { User, validateUser, validateLogin };
+module.exports = { User, validateUser, validateLogin, validateUserUpdate };

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 
-// Yorumlar için alt şema tanımlama
 const commentSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -18,7 +17,6 @@ const commentSchema = new mongoose.Schema({
   }
 });
 
-// Kitap şeması tanımlama
 const bookSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -48,7 +46,6 @@ const bookSchema = new mongoose.Schema({
   }
 });
 
-// Joi doğrulama şeması oluşturma
 const validateBook = (book) => {
   const schema = Joi.object({
     name: Joi.string().min(1).max(255).required(),
@@ -69,7 +66,6 @@ const validateBook = (book) => {
   return schema.validate(book);
 };
 
-// Model oluşturma
 const Book = mongoose.model('Book', bookSchema);
 
 module.exports = { Book, validateBook };

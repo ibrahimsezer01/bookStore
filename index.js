@@ -5,11 +5,17 @@ require("dotenv").config()
 const express = require('express')
 const app = express()
 
+// middleware
+app.use(express.json())
+
 // db setup
 require('./data/db')()
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
+// routes
+const user = require('./routers/user')
+app.use("/api/user", user)
 
 // server configuration settings
 const port = process.env.PORT || 3000

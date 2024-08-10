@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 
-// Category şeması tanımlama
 const categorySchema = new mongoose.Schema({
   name: {
     type: String,
@@ -20,7 +19,6 @@ const categorySchema = new mongoose.Schema({
   }]
 });
 
-// Joi doğrulama şeması oluşturma
 const validateCategory = (category) => {
   const schema = Joi.object({
     name: Joi.string().min(3).max(50).required(),
@@ -31,7 +29,6 @@ const validateCategory = (category) => {
   return schema.validate(category);
 };
 
-// Model oluşturma
 const Category = mongoose.model('Category', categorySchema);
 
 module.exports = { Category, validateCategory };
