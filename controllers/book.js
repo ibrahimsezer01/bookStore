@@ -23,30 +23,39 @@ exports.post_book = async (req, res) => {
 
 exports.put_book = async (req, res) => {
     const { name, author, page, releaseDate, language, category } = req.body;
+    const user = req.user._id;
     
     const { error } = validateUpdateBook(req.body);
     if (error) return res.status(400).send(error.details[0].message);
-    
-    const book = await Book.findByIdAndUpdate(req.params.id, {
-        name: name,
-        author: author,
-        page: page,
-        releaseDate: releaseDate,
-        language: language,
-        category: category
-    }, { new: true });
-    
+
+    let book = await Book.findById(req.params.id)
     if (!book) return res.status(404).send("Kitap bulunamadi.");
     
+    if (book.user.toString() !== user.toString()) return res.status(403).send('Yetkiniz yok.');
+    
+    book.name = name;
+    book.author = author;
+    book.page = page;
+    book.releaseDate = releaseDate;
+    book.language = language;
+    book.category = category;
+
+    await book.save();
+
     res.send(book);
 }
 
 exports.delete_book = async (req, res) => {
-    const book = await Book.findByIdAndDelete(req.params.id);
-    
+    const user = req.user._id
+
+    const book = await Book.findById(req.params.id);
     if (!book) return res.status(404).send("Kitap bulunamadi.");
+
+    if (book.user.toString() !== user.toString()) return res.status(403).send('Yetkiniz yok.');
     
-    res.send(book);
+    await book.deleteOne()
+    
+    res.send({ message: "Silme İşlemi Başarili" });
 }
 
 exports.get_books = async (req, res) => {
