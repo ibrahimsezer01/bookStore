@@ -28,6 +28,10 @@ const bookSchema = new mongoose.Schema({
     required: true
   },
   images: {
+    type: [mongoose.Schema.Types.Mixed],
+    required: true,
+  },
+  images_public_id: {
     type: [String],
     required: true,
   },
@@ -51,7 +55,7 @@ const validateBook = (book) => {
     releaseDate: Joi.date().required(),
     language: Joi.string().min(2).max(50).required(),
     category: Joi.string().required(),
-    images: Joi.array().items(Joi.string()).required(),
+    images: Joi.array().items(Joi.object()).required(),
     addedBy: Joi.string().required(),
   });
 
@@ -65,7 +69,7 @@ const validateUpdateBook = (book) => {
     page: Joi.number().integer().min(1).required(),
     releaseDate: Joi.date().required(),
     language: Joi.string().min(2).max(50).required(),
-    images: Joi.array().items(Joi.string()).required(),
+    images: Joi.array().items(Joi.object()).required(),
     category: Joi.string().required(),
   });
 

@@ -13,14 +13,17 @@ exports.singup = async (req, res) => {
     if (user) return res.status(400).send('Bu e-posta adresi zaten kayitli.');
 
     if (avatar) {
-        var imageUrl = await upload_user_profile(avatar)
+        var result = await upload_user_profile(avatar)
+        var avatar_url = result.secure_url
+        var avatar_public_id = result.public_id
     }
 
     user = new User({
         username: username,
         email: email,
         password: password,
-        avatar: imageUrl ? imageUrl : undefined
+        avatar: avatar ? avatar_url : undefined,
+        avatar_public_id: avatar ? avatar_public_id : undefined,
     });
 
     await user.save();
@@ -62,9 +65,10 @@ exports.putUser = async (req, res) => {
     }
 
     if (avatar) {
-        await delete_user_profile(user.avatar)
-        var imageUrl = await upload_user_profile(avatar)
-        user.avatar = imageUrl
+        await delete_user_profile(user.avatar_public_id);
+        var result = await upload_user_profile(avatar);
+        user.avatar = result.secure_url;
+        user.avatar_public_id = result.public_id;
     }
 
     user.set(updatedFields);

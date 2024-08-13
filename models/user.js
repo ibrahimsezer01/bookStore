@@ -30,6 +30,9 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.Mixed,
         default: "https://res.cloudinary.com/ibrahimsezer/image/upload/v1723573812/bookStore/users_profiles/avatar_hpi6g8.jpg"
     },
+    avatar_public_id: {
+        type: String
+    },
     resetPasswordToken: {
         type: String,
         default: ''

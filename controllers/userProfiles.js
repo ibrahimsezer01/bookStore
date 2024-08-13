@@ -6,10 +6,10 @@ exports.upload_user_profile = async (file) => {
         folder: process.env.CLOUD_USER_PROFILE,
         transformation: [{ width: 200, height: 200, crop: 'fill' }]
     });
-    return result.secure_url;
+    return result;
 }
 
-exports.delete_user_profile = async (file) => {
-    const result = await cloudinary.uploader.destroy(file);
+exports.delete_user_profile = async (public_id) => {
+    const result = await cloudinary.uploader.destroy(public_id);
     return result;
 };
