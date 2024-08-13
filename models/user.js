@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema({
         type: [String],
         default: ['user']
     },
+    avatar: {
+        type: mongoose.Schema.Types.Mixed,
+        default: "https://res.cloudinary.com/ibrahimsezer/image/upload/v1723573812/bookStore/users_profiles/avatar_hpi6g8.jpg"
+    },
     resetPasswordToken: {
         type: String,
         default: ''
@@ -74,7 +78,8 @@ const validateUserUpdate = (user) => {
     const schema = Joi.object({
       username: Joi.string().min(3).max(30),
       email: Joi.string().email(),
-      password: Joi.string().min(5).max(255)
+      password: Joi.string().min(5).max(255),
+      avatar: Joi.string()
     });
   
     return schema.validate(user);

@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 
-
-
 const bookSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -29,6 +27,10 @@ const bookSchema = new mongoose.Schema({
     ref: 'Category',
     required: true
   },
+  images: {
+    type: [String],
+    required: true,
+  },
   comments: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Comments',
@@ -49,6 +51,7 @@ const validateBook = (book) => {
     releaseDate: Joi.date().required(),
     language: Joi.string().min(2).max(50).required(),
     category: Joi.string().required(),
+    images: Joi.array().items(Joi.string()).required(),
     addedBy: Joi.string().required(),
   });
 
@@ -62,6 +65,8 @@ const validateUpdateBook = (book) => {
     page: Joi.number().integer().min(1).required(),
     releaseDate: Joi.date().required(),
     language: Joi.string().min(2).max(50).required(),
+    images: Joi.array().items(Joi.string()).required(),
+    category: Joi.string().required(),
   });
 
   return schema.validate(book);

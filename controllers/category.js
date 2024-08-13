@@ -26,6 +26,7 @@ exports.get_categories = async (req, res) => {
 
 exports.put_category = async (req, res) => {
     const { name, description } = req.body;
+    
     const { error } = validateCategory({ name });
     if (error) return res.status(400).send(error.details[0].message);
     

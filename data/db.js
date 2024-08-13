@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const config = require("../config")
+const config = require("../config/default")
 
 const username = config.db.username
 const password = config.db.password
