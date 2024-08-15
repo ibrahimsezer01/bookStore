@@ -8,8 +8,12 @@ require("express-async-errors")
 const express = require('express')
 const app = express()
 
+// custom middleware
+const rateLimiter = require("./middlewares/rateLimiter")
+
 // middleware
 app.use(express.json())
+app.use(rateLimiter)
 
 // db setup
 require('./data/db')()
