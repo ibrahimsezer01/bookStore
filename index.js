@@ -25,10 +25,12 @@ const user = require('./routers/user')
 const book = require('./routers/book')
 const category = require('./routers/category')
 const comment = require('./routers/comment')
+const error = require('./middlewares/error')
 app.use("/api/user", user)
 app.use("/api/book", book)
 app.use("/api/category", category)
 app.use("/api/comment", comment)
+app.use(error)
 
 // server configuration settings
 const port = process.env.PORT || 3000
