@@ -1,12 +1,12 @@
 const { createLogger, transports, format } = require('winston');
 const { combine, timestamp, prettyPrint, printf } = format
-require("winston-mongodb")
-const config = require("../config/default")
+require("winston-mongodb") 
+const config = require("config")
 
-const username = config.db.username
-const password = config.db.password
-const database = config.db.database
-const cluster = config.db.cluster
+const username = config.get("db.username")
+const password = config.get("db.password")
+const database = config.get("db.database")
+const cluster = config.get("db.cluster")
 
 const logger = createLogger({
     level: 'debug',

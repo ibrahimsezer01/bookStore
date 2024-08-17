@@ -1,9 +1,12 @@
 const cloudinary = require('../config/cloudinary');
+const config = require("config")
+
+const userProfilePath = config.get('cloudinary.user_profile_path')
 
 exports.upload_user_profile = async (file) => {
     const result = await cloudinary.uploader.upload(file.path, {
         use_filenames: true,
-        folder: process.env.CLOUD_USER_PROFILE,
+        folder: userProfilePath,
         transformation: [{ width: 200, height: 200, crop: 'fill' }]
     });
     return result;

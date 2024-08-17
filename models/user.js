@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const slug = require('../utils/slugify');
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -23,8 +24,14 @@ const userSchema = new mongoose.Schema({
         maxlength: 1024
     },
     roles: {
-        type: [String],
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'Roles',
         default: ['user']
+    },
+    slug: {
+        type: String,
+        required: true,
+        unique: true
     },
     avatar: {
         type: mongoose.Schema.Types.Mixed,
@@ -39,7 +46,7 @@ const userSchema = new mongoose.Schema({
     },
     resetPasswordExpires: {
         type: Date,
-        default: ''
+        default: null
     },
     createdAt: {
         type: Date,
@@ -48,12 +55,19 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) return next();
+    if (this.isModified('username')) {
+        this.slug = slug(this.username);
+    }
+    
+    if (this.isModified('password')) {
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
+    }
 
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
     next();
 });
+
+
 
 userSchema.methods.generateAuthToken = function () {
     const token = jwt.sign(

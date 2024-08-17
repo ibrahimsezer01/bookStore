@@ -1,6 +1,7 @@
 const { Book, validateBook, validateUpdateBook } = require('../models/book');
 const { Category } = require('../models/category');
 const { upload_book_images, delete_book_images } = require('./bookImages');
+const slugiField = require('../utils/slugify')
 
 exports.post_book = async (req, res) => {
     const { name, author, page, releaseDate, language, category } = req.body
