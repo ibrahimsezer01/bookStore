@@ -1,0 +1,96 @@
+Aug-21-2024 18:45:06 [error] Error: User validation failed: roles: Cast to [ObjectId] failed for value "[ 'user' ]" (type string) at path "roles.0" because of "CastError", slug: Path `slug` is required., Stack: ValidationError: User validation failed: roles: Cast to [ObjectId] failed for value "[ 'user' ]" (type string) at path "roles.0" because of "CastError", slug: Path `slug` is required.
+    at Document.invalidate (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\document.js:3312:32)
+    at applyDefaults (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\helpers\document\applyDefaults.js:104:17)
+    at model.Document (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\document.js:167:7)
+    at model.Model (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\model.js:124:12)
+    at new model (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\model.js:4549:15)
+    at exports.singup (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\controllers\user.js:22:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Aug-21-2024 18:46:56 [error] Error: User validation failed: roles: Cast to [ObjectId] failed for value "[ 'user' ]" (type string) at path "roles.0" because of "CastError", Stack: ValidationError: User validation failed: roles: Cast to [ObjectId] failed for value "[ 'user' ]" (type string) at path "roles.0" because of "CastError"
+    at Document.invalidate (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\document.js:3312:32)
+    at applyDefaults (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\helpers\document\applyDefaults.js:104:17)
+    at model.Document (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\document.js:167:7)
+    at model.Model (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\model.js:124:12)
+    at new model (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\model.js:4549:15)
+    at exports.singup (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\controllers\user.js:24:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Aug-21-2024 18:49:32 [error] Error: User validation failed: roles: Cast to [ObjectId] failed for value "[ 'user' ]" (type string) at path "roles.0" because of "CastError", Stack: ValidationError: User validation failed: roles: Cast to [ObjectId] failed for value "[ 'user' ]" (type string) at path "roles.0" because of "CastError"
+    at Document.invalidate (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\document.js:3312:32)
+    at applyDefaults (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\helpers\document\applyDefaults.js:104:17)
+    at model.Document (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\document.js:167:7)
+    at model.Model (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\model.js:124:12)
+    at new model (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\mongoose\lib\model.js:4549:15)
+    at exports.singup (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\controllers\user.js:24:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Aug-21-2024 18:50:35 [error] Error: 248A0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+, Stack: Error: 248A0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 18:55:19 [error] Error: 987B0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+, Stack: Error: 987B0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 18:56:55 [error] Error: 987B0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+, Stack: Error: 987B0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 18:58:16 [error] Error sending mail connect ETIMEDOUT 173.194.76.109:443:
+Error: connect ETIMEDOUT 173.194.76.109:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+Aug-21-2024 18:59:12 [error] Error sending mail 74680000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+:
+Error: 74680000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 19:01:36 [error] Error sending mail 14590000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+:
+Error: 14590000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 19:02:11 [error] Error sending mail 14590000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+:
+Error: 14590000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 19:04:45 [error] Error sending mail 5C840000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+:
+Error: 5C840000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 19:09:04 [error] Error sending mail D83E0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+:
+Error: D83E0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 19:15:23 [error] Error sending mail Unexpected socket close:
+Error: Unexpected socket close
+    at Timeout._onTimeout (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\nodemailer\lib\smtp-transport\index.js:190:31)
+    at listOnTimeout (node:internal/timers:581:17)
+    at process.processTimers (node:internal/timers:519:7)
+Aug-21-2024 19:26:16 [error] Error sending mail Unexpected socket close:
+Error: Unexpected socket close
+    at Timeout._onTimeout (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\nodemailer\lib\smtp-transport\index.js:190:31)
+    at listOnTimeout (node:internal/timers:581:17)
+    at process.processTimers (node:internal/timers:519:7)
+Aug-21-2024 19:28:26 [error] Error sending mail 404D0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+:
+Error: 404D0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 21:46:37 [error] Error sending mail 583A0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+:
+Error: 583A0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 21:48:53 [error] Error sending mail F06C0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+:
+Error: F06C0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 21:52:27 [error] Error sending mail 4C3F0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+:
+Error: 4C3F0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 21:56:57 [error] Error: 14430000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+, Stack: Error: 14430000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 21:59:53 [error] Error: 14430000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+, Stack: Error: 14430000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:c:\ws\deps\openssl\openssl\ssl\record\ssl3_record.c:355:
+
+Aug-21-2024 22:02:10 [error] Error: connect ETIMEDOUT 173.194.76.109:25, Stack: Error: connect ETIMEDOUT 173.194.76.109:25
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+Aug-21-2024 22:03:54 [error] Error: Connection timeout, Stack: Error: Connection timeout
+    at SMTPConnection._formatError (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\nodemailer\lib\smtp-connection\index.js:798:19)
+    at SMTPConnection._onError (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\nodemailer\lib\smtp-connection\index.js:784:20)
+    at Timeout.<anonymous> (C:\Users\ASUS\OneDrive\Masaüstü\BookStore\node_modules\nodemailer\lib\smtp-connection\index.js:237:22)
+    at listOnTimeout (node:internal/timers:581:17)
+    at process.processTimers (node:internal/timers:519:7)

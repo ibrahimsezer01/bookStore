@@ -11,13 +11,14 @@ const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: emailPort,
     secure: emailSecure,
-    tls: {
-        ciphers: "SSLv3"
-    },
     auth: {
         user: authUser,
         pass: authPass
     },
+    tls: false,
+    connectionTimeout: 10000,
+    greetingTimeout: 5000,
+    socketTimeout: 30000
 });
 
 

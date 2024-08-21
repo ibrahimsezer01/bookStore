@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     roles: {
         type: [mongoose.Schema.Types.ObjectId],
         ref: 'Roles',
-        default: ['user']
+        default: ['66c1267521c74bb2c3a0d066']
     },
     slug: {
         type: String,

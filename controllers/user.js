@@ -1,10 +1,13 @@
 const bcrypt = require('bcrypt');
 const { User, validateUser, validateLogin, validateUserUpdate } = require('../models/user');
 const { upload_user_profile, delete_user_profile } = require('./userProfiles');
+const send_email = require("../utils/mailler");
+const slugiField = require('../utils/slugify');
 
 exports.singup = async (req, res) => {
     const { username, email, password } = req.body
     let avatar = req.file
+    const slug = slugiField(username)
 
     const { error } = validateUser(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -22,11 +25,13 @@ exports.singup = async (req, res) => {
         username: username,
         email: email,
         password: password,
+        slug: slug,
         avatar: avatar ? avatar_url : undefined,
         avatar_public_id: avatar ? avatar_public_id : undefined,
     });
 
     await user.save();
+    await send_email(email, "Your account has been created")
 
     const token = user.generateAuthToken();
     res.send(token);
