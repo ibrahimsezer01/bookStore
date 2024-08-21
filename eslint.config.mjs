@@ -1,5 +1,4 @@
 import globals from "globals";
-import pluginJs from "@eslint/js";
 
 export default [
   {
@@ -10,8 +9,6 @@ export default [
         ...globals.node,
         ...globals.browser
       }
-    },
-    plugins: {
     },
     rules: {
       "no-unused-vars": "warn",
